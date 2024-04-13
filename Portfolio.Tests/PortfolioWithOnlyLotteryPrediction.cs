@@ -21,7 +21,7 @@ namespace Portfolio.Tests
         }
         
         [Test]
-        public void value_grows_by_5_eleven_days_or_more_after_now()
+        public void value_grows_by_5_11_days_or_more_after_now()
         {
             var portfolio = APortFolio()
                 .With(AnAsset().DescribedAs("Lottery Prediction").
