@@ -1,14 +1,16 @@
 using NUnit.Framework;
+using static Portfolio.Tests.AssetsFileLinesBuilder;
+using static Portfolio.Tests.TestingPortfolioBuilder;
 
 namespace Portfolio.Tests
 {
-    public class PortfolioWithOnlyLotteryPredictionTest
+    public class PortfolioWithOnlyLotteryPrediction
     {
         [Test]
-        public void before_now_value_drops_to_zero()
+        public void value_drops_to_zero_before_now()
         {
-            var portfolio = TestingPortfolioBuilder.APortFolio()
-                .With(AssetsFileLinesBuilder.AnAsset().DescribedAs("Lottery Prediction").
+            var portfolio = APortFolio()
+                .With(AnAsset().DescribedAs("Lottery Prediction").
                     FromDate("2024/04/15").WithValue(50))
                 .OnDate("2025/01/01")
                 .Build();
@@ -19,10 +21,10 @@ namespace Portfolio.Tests
         }
         
         [Test]
-        public void eleven_days_or_more_after_now_value_grows_by_5()
+        public void value_grows_by_5_eleven_days_or_more_after_now()
         {
-            var portfolio = TestingPortfolioBuilder.APortFolio()
-                .With(AssetsFileLinesBuilder.AnAsset().DescribedAs("Lottery Prediction").
+            var portfolio = APortFolio()
+                .With(AnAsset().DescribedAs("Lottery Prediction").
                     FromDate("2024/04/15").WithValue(50))
                 .OnDate("2024/01/01")
                 .Build();
@@ -33,10 +35,10 @@ namespace Portfolio.Tests
         }
         
         [Test]
-        public void less_than_11_days_after_now_value_grows_by_25()
+        public void value_grows_by_25_less_than_11_days_after_now()
         {
-            var portfolio = TestingPortfolioBuilder.APortFolio()
-                .With(AssetsFileLinesBuilder.AnAsset().DescribedAs("Lottery Prediction").
+            var portfolio = APortFolio()
+                .With(AnAsset().DescribedAs("Lottery Prediction").
                     FromDate("2024/04/14").WithValue(50))
                 .OnDate("2024/04/04")
                 .Build();
@@ -47,10 +49,10 @@ namespace Portfolio.Tests
         }
         
         [Test]
-        public void less_than_6_days_after_now_value_grows_by_125()
+        public void value_grows_by_125_less_than_6_days_after_now()
         {
-            var portfolio = TestingPortfolioBuilder.APortFolio()
-                .With(AssetsFileLinesBuilder.AnAsset().DescribedAs("Lottery Prediction").
+            var portfolio = APortFolio()
+                .With(AnAsset().DescribedAs("Lottery Prediction").
                     FromDate("2024/04/09").WithValue(50))
                 .OnDate("2024/04/04")
                 .Build();
@@ -64,8 +66,8 @@ namespace Portfolio.Tests
         public void value_can_not_be_more_than_800()
         {
             const int maxValueForLotteryPredictions = 800;
-            var portfolio = TestingPortfolioBuilder.APortFolio()
-                .With(AssetsFileLinesBuilder.AnAsset().DescribedAs("Lottery Prediction").
+            var portfolio = APortFolio()
+                .With(AnAsset().DescribedAs("Lottery Prediction").
                     FromDate("2024/04/15").WithValue(800))
                 .OnDate("2024/04/09")
                 .Build();

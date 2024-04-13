@@ -1,4 +1,5 @@
 using System.Globalization;
+using static Portfolio.Tests.CultureInfoFactory;
 
 namespace Portfolio.Tests;
 
@@ -40,7 +41,7 @@ public class TestingPortfolioBuilder
     private TestingPortfolioBuilder()
     {
         _lines = new List<string>();
-        _cultureInfo = new CultureInfo("es-ES");
+        _cultureInfo = CreateCultureInfo();
         _now = new DateTime().ToString(_cultureInfo);
     }
 }
