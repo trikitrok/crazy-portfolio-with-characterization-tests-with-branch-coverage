@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using static System.Globalization.CultureInfo;
 
 namespace Portfolio
 {
@@ -20,9 +21,8 @@ namespace Portfolio
             foreach (var line in lines)
             {
                 var columns = line.Split(",");
-                var provider = new CultureInfo("fr-FR");
                 var dateAsString = columns[1];
-                var dateTime = CreateAssetDateTime(dateAsString, provider);
+                var dateTime = CreateAssetDateTime(dateAsString, CurrentCulture);
                 var asset = new Asset(columns[0],
                     dateTime,
                     columns[0] == "Unicorn" ? new PricelessValue() : new MeasurableValue(float.Parse(columns[2])));
@@ -42,7 +42,7 @@ namespace Portfolio
                                 else
                                 {
                                     DisplayMessage("Portfolio is priceless because it got a unicorn on " +
-                                                   FormatDate(asset.Date, provider) + "!!!!!");
+                                                   FormatDate(asset.Date, CurrentCulture) + "!!!!!");
                                     return;
                                 }
                             }
@@ -72,9 +72,9 @@ namespace Portfolio
                             }
                             else
                             {
-                                Console.WriteLine(
+                                DisplayMessage(
                                     "Portfolio is priceless because it got a unicorn on " +
-                                    FormatDate(asset.Date, provider) + "!!!!!");
+                                    FormatDate(asset.Date, CurrentCulture) + "!!!!!");
                                 return;
                             }
                         }
@@ -82,9 +82,9 @@ namespace Portfolio
                         {
                             if (asset.Description == "Unicorn")
                             {
-                                Console.WriteLine(
+                                DisplayMessage(
                                     "Portfolio is priceless because it got a unicorn on " +
-                                    FormatDate(asset.Date, provider) + "!!!!!");
+                                    FormatDate(asset.Date, CurrentCulture) + "!!!!!");
                                 return;
                             }
                         }
@@ -127,7 +127,7 @@ namespace Portfolio
                 portfolioValue = new MeasurableValue(portfolioValue.Get() + asset.Value.Get());
             }
 
-            Console.WriteLine(portfolioValue);
+            DisplayMessage(portfolioValue.ToString());
         }
 
         protected virtual DateTime GetNow()
@@ -147,9 +147,9 @@ namespace Portfolio
             Console.WriteLine(message);
         }
 
-        protected virtual string FormatDate(DateTime assetDate, CultureInfo provider)
+        protected virtual string FormatDate(DateTime assetDate, CultureInfo cultureInfo)
         {
-            return assetDate.ToString(provider);
+            return assetDate.ToString(cultureInfo);
         }
 
         protected virtual DateTime CreateAssetDateTime(string dateAsString, CultureInfo cultureInfo)
