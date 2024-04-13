@@ -1,6 +1,7 @@
+using System.Globalization;
 using NUnit.Framework;
-using static Portfolio.Tests.AssetsFileLinesBuilder;
-using static Portfolio.Tests.TestingPortfolioBuilder;
+using static Portfolio.Tests.helpers.AssetsFileLinesBuilder;
+using static Portfolio.Tests.helpers.TestingPortfolioBuilder;
 
 namespace Portfolio.Tests;
 
@@ -16,7 +17,7 @@ public class PortfolioFails
             () => portfolio.ComputePortfolioValue()
         );
     }
-    
+
     [Test]
     public void when_an_asset_has_an_invalid_date()
     {
@@ -28,7 +29,7 @@ public class PortfolioFails
             () => portfolio.ComputePortfolioValue()
         );
     }
-    
+
     [Test]
     public void when_an_asset_has_an_invalid_value()
     {

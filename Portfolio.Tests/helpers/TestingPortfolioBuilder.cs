@@ -1,13 +1,11 @@
-using System.Globalization;
-using static Portfolio.Tests.CultureInfoFactory;
+using static Portfolio.Tests.helpers.CultureInfoUtils;
 
-namespace Portfolio.Tests;
+namespace Portfolio.Tests.helpers;
 
 public class TestingPortfolioBuilder
 {
     private readonly List<string> _lines;
     private string _now;
-    private CultureInfo _cultureInfo;
 
     public static TestingPortfolioBuilder APortFolio()
     {
@@ -35,13 +33,12 @@ public class TestingPortfolioBuilder
 
     public TestingPortfolio Build()
     {
-        return new TestingPortfolio(_lines.ToArray(), _now, _cultureInfo);
+        return new TestingPortfolio(_lines.ToArray(), _now);
     }
     
     private TestingPortfolioBuilder()
     {
         _lines = new List<string>();
-        _cultureInfo = CreateCultureInfo();
-        _now = new DateTime().ToString(_cultureInfo);
+        _now = "";
     }
 }

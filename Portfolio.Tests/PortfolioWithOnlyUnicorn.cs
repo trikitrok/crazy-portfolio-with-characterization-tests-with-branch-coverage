@@ -1,6 +1,6 @@
 using NUnit.Framework;
-using static Portfolio.Tests.AssetsFileLinesBuilder;
-using static Portfolio.Tests.TestingPortfolioBuilder;
+using static Portfolio.Tests.helpers.AssetsFileLinesBuilder;
+using static Portfolio.Tests.helpers.TestingPortfolioBuilder;
 
 namespace Portfolio.Tests;
 
@@ -16,7 +16,7 @@ public class PortfolioWithOnlyUnicorn
             .Build();
 
         portfolio.ComputePortfolioValue();
-            
+        
         Assert.That(portfolio._messages[0], Is.EqualTo("Portfolio is priceless because it got a unicorn on 15/1/2023 0:00:00!!!!!"));
     }
     

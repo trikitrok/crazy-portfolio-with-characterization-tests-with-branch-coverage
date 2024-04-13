@@ -1,20 +1,18 @@
-using System.Globalization;
-using static Portfolio.Tests.CultureInfoFactory;
+using static Portfolio.Tests.helpers.CultureInfoUtils;
 
-namespace Portfolio.Tests;
+namespace Portfolio.Tests.helpers;
 
 public class AssetsFileLinesBuilder
 {
     private string _dateAsString;
     private string _description;
-    private float? _value;
     private string _valueAsString;
 
     private AssetsFileLinesBuilder()
     {
         _dateAsString = "";
         _description = "description";
-        _value = null;
+        _valueAsString = "";
     }
 
     public static AssetsFileLinesBuilder AnAsset()
@@ -36,8 +34,7 @@ public class AssetsFileLinesBuilder
 
     public AssetsFileLinesBuilder WithValue(float value)
     {
-        _value = value;
-        _valueAsString = value.ToString(CreateCultureInfo());
+        _valueAsString = ConvertToString(value);
         return this;
     }
     
@@ -51,7 +48,6 @@ public class AssetsFileLinesBuilder
     {
         var assetValue = _valueAsString;
         var assetFileLine = $"{_description},{_dateAsString},{assetValue}";
-        Console.WriteLine("assetFileLine: " + assetFileLine);
         return assetFileLine;
     }
 }

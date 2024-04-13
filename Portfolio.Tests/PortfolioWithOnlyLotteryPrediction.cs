@@ -1,6 +1,6 @@
 using NUnit.Framework;
-using static Portfolio.Tests.AssetsFileLinesBuilder;
-using static Portfolio.Tests.TestingPortfolioBuilder;
+using static Portfolio.Tests.helpers.AssetsFileLinesBuilder;
+using static Portfolio.Tests.helpers.TestingPortfolioBuilder;
 
 namespace Portfolio.Tests
 {
