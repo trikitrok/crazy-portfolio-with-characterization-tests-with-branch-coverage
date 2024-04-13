@@ -2,10 +2,10 @@ using NUnit.Framework;
 
 namespace Portfolio.Tests
 {
-    public class DisplayingValueOfPortfolioWithOnlyLotteryPrediction
+    public class PortfolioWithOnlyLotteryPredictionTest
     {
         [Test]
-        public void before_now()
+        public void before_now_value_drops_to_zero()
         {
             var portfolio = TestingPortfolioBuilder.APortFolio()
                 .With(AssetsFileLinesBuilder.AnAsset().DescribedAs("Lottery Prediction").
@@ -19,7 +19,7 @@ namespace Portfolio.Tests
         }
         
         [Test]
-        public void eleven_days_or_more_after_now()
+        public void eleven_days_or_more_after_now_value_grows_by_5()
         {
             var portfolio = TestingPortfolioBuilder.APortFolio()
                 .With(AssetsFileLinesBuilder.AnAsset().DescribedAs("Lottery Prediction").
@@ -33,7 +33,7 @@ namespace Portfolio.Tests
         }
         
         [Test]
-        public void less_than_11_days_after_now()
+        public void less_than_11_days_after_now_value_grows_by_25()
         {
             var portfolio = TestingPortfolioBuilder.APortFolio()
                 .With(AssetsFileLinesBuilder.AnAsset().DescribedAs("Lottery Prediction").
@@ -47,7 +47,7 @@ namespace Portfolio.Tests
         }
         
         [Test]
-        public void less_than_6_days_after_now()
+        public void less_than_6_days_after_now_value_grows_by_125()
         {
             var portfolio = TestingPortfolioBuilder.APortFolio()
                 .With(AssetsFileLinesBuilder.AnAsset().DescribedAs("Lottery Prediction").
@@ -63,6 +63,7 @@ namespace Portfolio.Tests
         [Test]
         public void value_can_not_be_more_than_800()
         {
+            const int maxValueForLotteryPredictions = 800;
             var portfolio = TestingPortfolioBuilder.APortFolio()
                 .With(AssetsFileLinesBuilder.AnAsset().DescribedAs("Lottery Prediction").
                     FromDate("2024/04/15").WithValue(800))
@@ -71,7 +72,7 @@ namespace Portfolio.Tests
 
             portfolio.ComputePortfolioValue();
             
-            Assert.That(portfolio._messages[0], Is.EqualTo("800"));
+            Assert.That(portfolio._messages[0], Is.EqualTo(maxValueForLotteryPredictions.ToString()));
         }
 
     }
