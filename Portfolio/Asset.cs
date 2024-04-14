@@ -22,39 +22,41 @@ public class Asset
 
 public abstract class Value
 {
-    protected readonly float _value;
+    protected readonly int _value;
 
-    protected Value(float value)
+    protected Value(int value)
     {
         _value = value;
     }
 
-    public float Get()
+    public int Get()
     {
         return _value;
     }
 }
 
-public class MeasurableValue: Value
+public class MeasurableValue : Value
 {
-    public MeasurableValue(float value) : base(value)
-    { }
-    
+    public MeasurableValue(int value) : base(value)
+    {
+    }
+
     public override string ToString()
     {
         return _value.ToString(CultureInfo.CurrentCulture);
     }
 }
 
-public class PricelessValue : Value 
+public class PricelessValue : Value
 {
-    public PricelessValue() : base(float.PositiveInfinity)
-    { }
+    public PricelessValue() : base(int.MaxValue)
+    {
+    }
 }
 
-public class NoValue : Value 
+public class NoValue : Value
 {
     public NoValue() : base(0)
-    { }
+    {
+    }
 }
-

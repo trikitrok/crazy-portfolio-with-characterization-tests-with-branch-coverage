@@ -1,11 +1,15 @@
-using static Portfolio.Tests.helpers.CultureInfoUtils;
-
 namespace Portfolio.Tests.helpers;
 
 public class TestingPortfolioBuilder
 {
     private readonly List<string> _lines;
     private string _now;
+
+    private TestingPortfolioBuilder()
+    {
+        _lines = new List<string>();
+        _now = "";
+    }
 
     public static TestingPortfolioBuilder APortFolio()
     {
@@ -34,11 +38,5 @@ public class TestingPortfolioBuilder
     public TestingPortfolio Build()
     {
         return new TestingPortfolio(_lines.ToArray(), _now);
-    }
-    
-    private TestingPortfolioBuilder()
-    {
-        _lines = new List<string>();
-        _now = "";
     }
 }

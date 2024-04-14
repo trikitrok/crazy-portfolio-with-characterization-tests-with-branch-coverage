@@ -1,4 +1,3 @@
-using System.Globalization;
 using NUnit.Framework;
 using static Portfolio.Tests.helpers.AssetsFileLinesBuilder;
 using static Portfolio.Tests.helpers.TestingPortfolioBuilder;

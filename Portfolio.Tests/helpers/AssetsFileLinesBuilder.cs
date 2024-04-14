@@ -32,12 +32,12 @@ public class AssetsFileLinesBuilder
         return this;
     }
 
-    public AssetsFileLinesBuilder WithValue(float value)
+    public AssetsFileLinesBuilder WithValue(int value)
     {
         _valueAsString = ConvertToString(value);
         return this;
     }
-    
+
     public AssetsFileLinesBuilder WithValue(string value)
     {
         _valueAsString = value;

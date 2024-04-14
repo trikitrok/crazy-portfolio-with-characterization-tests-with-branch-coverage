@@ -5,8 +5,8 @@ namespace Portfolio.Tests.helpers;
 public class CultureInfoUtils
 {
     private const string CultureInfoString = "es-ES";
-    
-    public static string ConvertToString(float value)
+
+    public static string ConvertToString(int value)
     {
         return value.ToString(CreateCultureInfo());
     }
@@ -15,12 +15,12 @@ public class CultureInfoUtils
     {
         return date.ToString(CultureInfo.CreateSpecificCulture(CultureInfoString));
     }
-    
+
     public static DateTime ParseExact(string dateAsString, string format)
     {
         return DateTime.ParseExact(dateAsString, format, CultureInfo.InvariantCulture);
     }
-    
+
     private static CultureInfo CreateCultureInfo()
     {
         return new CultureInfo(CultureInfoString);

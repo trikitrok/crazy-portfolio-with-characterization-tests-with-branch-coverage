@@ -8,7 +8,7 @@ public class TestingPortfolio : Portfolio
     private readonly DateTime _now;
     public List<string> _messages;
 
-    public TestingPortfolio(string[] assetsFileLines, string nowAsString) : 
+    public TestingPortfolio(string[] assetsFileLines, string nowAsString) :
         base("")
     {
         _assetsFileLines = assetsFileLines;
@@ -38,6 +38,6 @@ public class TestingPortfolio : Portfolio
 
     protected override DateTime CreateAssetDateTime(string dateAsString, CultureInfo notUsed)
     {
-        return  CultureInfoUtils.ParseExact(dateAsString, "yyyy/MM/dd");
+        return CultureInfoUtils.ParseExact(dateAsString, "yyyy/MM/dd");
     }
 }
